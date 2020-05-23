@@ -2,13 +2,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Gắn mô tả cho ảnh</title>
-<link href="../css/css.css" rel="stylesheet" type="text/css" />
-<link rel="shortcut icon" href="../favicon.ico" />
+<link href="{{asset('/css/css.css')}}" rel="stylesheet" type="text/css" />
+<link rel="shortcut icon" href="{{asset('/favicon.ico')}}" />
 <meta name="theme-color" content="#444" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="{{asset('js/jquery.min.js')}}"></script>
+<link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="{{asset('js/bootstrap.min.js')}}" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
 <style>
 thead {color:green;}
@@ -32,7 +32,7 @@ table, th, td, tr {
   <div class="margin">
       <div class="logo-outer">
         <a href="{{ route('home')}}">
-          <img src="/images/hust.png" style="height: 70px"/>
+          <img src="{{asset('/images/hust.png')}}" style="height: 70px"/>
         </a>
        </div>
     </div>
@@ -55,7 +55,7 @@ table, th, td, tr {
           </div>
           <div class="col-md-1 mb-1">
             <label for="page" class="sr-only">Số trang</label>
-            <input type="text" class="form-control-plaintext is-valid" id="page" name="page" style="text-align: center; border-color: #117a8b; border-width: thin;" type="number" value="{{$images->currentPage()}}">
+            <input type="text" class="form-control-plaintext is-valid" name="page" style="text-align: center; border-color: #117a8b; border-width: thin;" type="number" value="{{$images->currentPage()}}">
           </div>
           <div class="col-md-1 mb-1">
             <button type="submit" class="btn btn-primary mb-2" style="width: 70px;">Đến</button>
@@ -91,11 +91,11 @@ table, th, td, tr {
                   @endif
                   
                   <br>
-                  <button id="edit_{{ $caption->id }}" type="button" data-caption="{{ $caption->caption }}" data-id="{{ $caption->id }}" onclick='editCaption("{{ $caption->id }}")' style="margin-bottom: 7px;" class="btn btn-warning edit-caption">Sửa</button>
-                  <button id="update_{{ $caption->id }}" type="button" data-caption="{{ $caption->caption }}" data-id="{{ $caption->id }}" onclick='updateCaption("{{ $caption->id }}")' style="display: none; margin-bottom: 7px;" class="btn btn-success update-caption">Lưu</button>
+                  <button id="edit_{{ $caption->id }}" type="button" data-caption="{{ $caption->caption }}" data-id="{{ $caption->id }}" onclick='editCaption("{{ $caption->id }}")' style="margin-top: -10px;margin-bottom: 7px;" class="btn btn-warning edit-caption">Sửa</button>
+                  <button id="update_{{ $caption->id }}" type="button" data-caption="{{ $caption->caption }}" data-id="{{ $caption->id }}" onclick='updateCaption("{{ $caption->id }}")' style="margin-top: -10px; display: none; margin-bottom: 7px;" class="btn btn-success update-caption">Lưu</button>
                 </td>
                 @if ($key % 2 == 0)
-                  <td rowspan="2" align="middle"><img height="300px" src="{{ '/data/imgs/'.$image->file_path }}"></td>
+                  <td rowspan="2" align="middle"><img height="300px" src="{{ asset('/data/imgs/'.$image->file_path) }}"></td>
                 @endif
                 @if ($key % 2 == 0)
                   <td rowspan="2" align="middle">{{ $image->id }}</td>
@@ -114,7 +114,7 @@ table, th, td, tr {
           </div>
           <div class="col-md-1 mb-1">
             <label for="page" class="sr-only">Số trang</label>
-            <input type="text" class="form-control-plaintext is-valid" id="page" name="page" style="text-align: center; border-color: #117a8b; border-width: thin;" type="number" value="{{$images->currentPage()}}">
+            <input type="text" class="form-control-plaintext is-valid" name="page" style="text-align: center; border-color: #117a8b; border-width: thin;" type="number" value="{{$images->currentPage()}}">
           </div>
           <div class="col-md-1 mb-1">
             <button type="submit" class="btn btn-primary mb-2" style="width: 70px;">Đến</button>
